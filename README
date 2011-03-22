@@ -1,0 +1,13 @@
+This is a Sinatra app which will connect to a database and count the number of delayed jobs pending and the number of failed jobs.
+If there are too many delayed jobs or if there are any failed jobs, then an error header status gets sent.  This is used in conjunction with Sequencescape and Asset audits (git://github.com/sanger/asset_audits.git)
+
+To run it:
+export RAILS_ENV=development && ruby user_barcode.rb -p 3015
+
+To view it:
+http://localhost:3015
+
+To use it:
+http://localhost:3015/sequencescape
+http://localhost:3015/sequencescape
+

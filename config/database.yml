@@ -1,0 +1,15 @@
+development_sequencescape:
+  adapter: mysql
+  username: root
+  password:
+  host: localhost
+  port: 3306
+  database: sequencescape_development
+  
+development_process_tracking:
+  adapter: mysql
+  username: root
+  password:
+  host: localhost
+  port: 3306
+  database: process_tracking_development
