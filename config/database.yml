@@ -13,3 +13,11 @@ development_process_tracking:
   host: localhost
   port: 3306
   database: process_tracking_development
+
+development_warehouse_two:
+  adapter: mysql
+  username: root
+  password:
+  host: localhost
+  port: 3306
+  database: warehouse_two_development
