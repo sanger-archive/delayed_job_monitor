@@ -16,14 +16,14 @@ helpers do
     Deployed::VERSION_STRING
   end
   
-  def generate_page(application_name)
+  def generate_page(application_name, max_pending_jobs, max_failed_jobs)
       DelayedJob.establish_connection(
         @@database["#{RAILS_ENV}_#{application_name}"]
       )
       number_of_jobs = DelayedJob.count
       number_of_failed_jobs = DelayedJob.find(:all, :conditions => [ 'last_error is not NULL' ]).count
 
-      status 503 if (number_of_jobs > 8 || number_of_failed_jobs > 0)
+      status 503 if (number_of_jobs > max_pending_jobs || number_of_failed_jobs > max_failed_jobs)
       content_type 'text/plain', :charset => 'utf-8'
       <<-_EOF_
 #{DelayedJob.count} Delayed jobs pending
@@ -35,11 +35,15 @@ class DelayedJob < ActiveRecord::Base
 end
 
 get '/sequencescape' do
-  generate_page('sequencescape')
+  generate_page('sequencescape', 8, 0)
 end
 
 get '/process_tracking' do
-  generate_page('process_tracking')
+  generate_page('process_tracking', 8, 0)
+end
+
+get '/warehouse_two' do
+  generate_page('warehouse_two', 1500, 10)
 end
 
 get '/' do
