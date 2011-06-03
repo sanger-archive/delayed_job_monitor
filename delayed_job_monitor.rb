@@ -43,7 +43,7 @@ get '/process_tracking' do
 end
 
 get '/warehouse_two' do
-  generate_page('warehouse_two', 1500, 10)
+  generate_page('warehouse_two', 4000, 10)
 end
 
 get '/' do
