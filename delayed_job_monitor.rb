@@ -47,7 +47,7 @@ helpers do
       http_status_code = DELAYED_JOB_HTTP_OK
     end
       
-    render_page(http_status_code, "#{number_of_delayed_jobs} jobs pending")
+    render_page(http_status_code, "#{number_of_delayed_jobs} jobs pending, #{number_of_old_jobs} job older than #{max_delayed_job_age_in_days} day(s)")
   end
   
   def number_of_old_delayed_jobs(max_delayed_job_age_in_days)
