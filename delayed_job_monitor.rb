@@ -84,7 +84,7 @@ get '/process_tracking' do
 end
 
 get '/warehouse_two' do
-  generate_warehouse_status_page('warehouse_two', 2 )
+  generate_warehouse_status_page('warehouse_two', 3 )
 end
 
 get '/' do
